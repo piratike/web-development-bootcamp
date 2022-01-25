@@ -1,0 +1,15 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "This is a test of npm tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Machuca",
+  "license": "ISC",
+  "dependencies": {
+    "superheroes": "^3.0.0",
+    "supervillains": "^3.0.0"
+  }
+}
