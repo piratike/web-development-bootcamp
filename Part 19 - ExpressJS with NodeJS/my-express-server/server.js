@@ -9,6 +9,18 @@ app.get('/', function(request, response) {
 
 });
 
+app.get('/about', function(request, response) {
+
+    response.send('Hola me llamo Kevin y me gusta la electrónica.');
+
+});
+
+app.get('/contact', function(request, response) {
+
+    response.send('Contact me at kevin@gmail.com');
+
+});
+
 app.listen(3000, function() {
 
     console.log('Server started');
