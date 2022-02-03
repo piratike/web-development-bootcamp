@@ -4,14 +4,46 @@ const express = require('express');
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static('public'));
+
+var items = [];
+var workItems = [];
 
 app.get('/', function(req, res) {
 
     var today = new Date();
-    var currentDay = today.getDay();
-    var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var options = {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long'
+    };
+    var day = today.toLocaleDateString('en-US', options);
 
-    res.render('list', {kindOfDay: daysOfWeek[currentDay]});
+    res.render('list', {listTitle: day, itemList: items});
+
+});
+
+app.post('/', function(req, res) {
+
+    console.log(req.body.list);
+
+    if(req.body.list === 'Work') {
+
+        workItems.push(req.body.newItem);
+        res.redirect('/work');
+
+    } else {
+
+        items.push(req.body.newItem);
+        res.redirect('/');
+
+    }
+
+});
+
+app.get('/work', function(req, res) {
+
+    res.render('list', {listTitle: 'Work', itemList: workItems})
 
 });
 
