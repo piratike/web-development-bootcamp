@@ -27,17 +27,27 @@ const fruit = new Fruit({
 
 const peopleSchema = new mongoose.Schema({
     name: String,
-    age: Number
+    age: Number,
+    favouriteFruit: fruitSchema
 });
 
 const Person = mongoose.model('Person', peopleSchema);
 
-const person = new Person({
-    name: 'Jhon',
-    age: 37
+const pineapple = new Fruit({
+    name: 'Pineapple',
+    score: 9,
+    review: 'Great fruit.'
 });
 
-// person.save();
+// pineapple.save();
+
+const person = new Person({
+    name: 'Amy',
+    age: 12,
+    favouriteFruit: pineapple
+});
+
+person.save();
 
 // const kiwi = new Fruit({
 //     name: 'Kiwi',
@@ -65,13 +75,37 @@ const person = new Person({
 //     }
 // });
 
-Fruit.find(function(err, fruits) {
-    if(err) {
-        console.log(err);
-    } else {
-        // console.log(fruits);
-        fruits.forEach(function(fruit) {
-            console.log(fruit.name);
-        });
-    }
-});
+// Fruit.updateOne({_id: '620178f5a7c2698912b9f602'}, {name: 'Peach'}, function(err) {
+//     if(err) {
+//         console.log(err);
+//     } else {
+//         console.log('Updated!');
+//     }
+// });
+
+// Fruit.deleteOne({name: 'Peach'}, function(err) {
+//     if(err) {
+//         console.log(err);
+//     } else {
+//         console.log('Deleted!');
+//     }
+// });
+
+// Person.deleteMany({name: 'Jhon'}, function(err) {
+//     if(err) {
+//         console.log(err);
+//     } else {
+//         console.log('Deleted!');
+//     }
+// });
+
+// Fruit.find(function(err, fruits) {
+//     if(err) {
+//         console.log(err);
+//     } else {
+//         // console.log(fruits);
+//         fruits.forEach(function(fruit) {
+//             console.log(fruit);
+//         });
+//     }
+// });
