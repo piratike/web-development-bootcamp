@@ -1,3 +1,4 @@
+/*
 var numbers = [3, 56, 2, 48, 5];
 var newNumbers = [];
 
@@ -50,3 +51,14 @@ var indexSearched = numbers.findIndex(function(currentNumber) {
 });
 
 console.log(indexSearched);
+*/
+
+import emojipedia from './emojipedia';
+
+const meanings = emojipedia.map(function(emoji) {
+
+    return emoji.meaning.substring(0, 100);
+
+});
+
+console.log(meanings);
